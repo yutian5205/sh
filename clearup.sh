@@ -8,4 +8,17 @@ if [ "$UID" != "0" ];then
 	exit 0
 fi
 
-echo "我是root"
+log=/var/log/messages
+lines=100
+
+#判断用户是否输入行数，如果没有使用系统默认。
+
+if [ -n "$1" ];then
+	Lines="$1"
+else
+	Lines=$lines
+fi
+
+echo "$Lines"
+#tail -n 100 log
+#echo /dev/null >log
