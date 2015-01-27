@@ -26,5 +26,7 @@ if [ $(pwd) != "$log_dir" ];then
 fi
 
 echo "$Lines"
-#tail -n 100 log
-#echo /dev/null >log
+tail -n $Lines messages > temp.mess
+cat /dev/null > messages
+mv temp.mess messages
+echo "日志清空完成！"
