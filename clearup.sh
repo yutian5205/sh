@@ -8,7 +8,7 @@ if [ "$UID" != "0" ];then
 	exit 0
 fi
 
-log=/var/log/messages
+log_dir=/var/log/messages
 lines=100
 
 #判断用户是否输入行数，如果没有使用系统默认。
@@ -17,6 +17,11 @@ if [ -n "$1" ];then
 	Lines="$1"
 else
 	Lines=$lines
+fi
+
+if [ $(pwd) != "$log_dir"];then
+	echo "can't  change to $log_dir"
+	exit 1
 fi
 
 echo "$Lines"
